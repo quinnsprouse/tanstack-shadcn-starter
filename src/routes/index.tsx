@@ -37,9 +37,11 @@ function Home() {
             Get Started
             <ArrowRight className="ml-2 size-4" />
           </Button>
-          <Button size="lg" variant="outline" className="font-medium">
-            <Github className="mr-2 size-4" />
-            View Source
+          <Button size="lg" variant="outline" className="font-medium" asChild>
+            <a href="https://github.com/quinnsprouse/tanstack-shadcn-starter" target="_blank" rel="noopener noreferrer">
+              <Github className="mr-2 size-4" />
+              View Source
+            </a>
           </Button>
         </div>
 
