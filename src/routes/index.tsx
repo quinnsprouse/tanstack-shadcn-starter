@@ -1,8 +1,9 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
-import { ArrowRight, Github, Sparkles } from 'lucide-react'
+import { Github, Sparkles } from 'lucide-react'
 import { motion } from 'motion/react'
+import { Snippet } from '@/components/ui/snippet'
 
 export const Route = createFileRoute('/')({
   component: Home,
@@ -18,6 +19,9 @@ const stackLinks = [
 ]
 
 function Home() {
+  const installCommand =
+    'git clone https://github.com/quinnsprouse/tanstack-shadcn-starter.git && cd tanstack-shadcn-starter && npm install && npm run dev'
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-8">
       <div className="max-w-3xl mx-auto text-center space-y-8">
@@ -28,13 +32,11 @@ function Home() {
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
           style={{ willChange: 'transform' }}
         >
-          {/* Badge */}
           <Badge variant="secondary" className="px-4 py-1 inline-flex items-center justify-center gap-2">
             <Sparkles className="size-3" />
             Modern Stack Ready
           </Badge>
 
-          {/* Title */}
           <h1 className="text-6xl font-bold tracking-tight">
             Build faster with
             <span className="block mt-2 bg-gradient-to-r from-primary to-primary/60 bg-clip-text text-transparent">
@@ -42,43 +44,37 @@ function Home() {
             </span>
           </h1>
 
-          {/* Description */}
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto leading-relaxed">
-            Production-ready boilerplate with TanStack Start, Shadcn/ui, and Tailwind CSS v4.
+            Production-ready boilerplate with TanStack Start, Shadcn/ui, Tailwind CSS v4, and Motion.
             Type-safe, server-rendered, and beautiful out of the box.
           </p>
         </motion.div>
 
-        {/* CTAs */}
-        <div className="flex flex-wrap gap-4 justify-center pt-4">
-          <Button size="lg" className="font-medium" asChild>
-            <motion.button
-              whileHover={{ scale: 1.015 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ duration: 0.18, ease: 'easeOut' }}
-              style={{ willChange: 'transform' }}
-            >
-              Get Started
-              <ArrowRight className="ml-2 size-4" />
-            </motion.button>
-          </Button>
-          <Button size="lg" variant="outline" className="font-medium" asChild>
-            <motion.a
+        <motion.div
+          className="mx-auto w-full max-w-2xl space-y-3"
+          initial={{ opacity: 0, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.35, ease: 'easeOut', delay: 0.05 }}
+          style={{ willChange: 'transform' }}
+        >
+          <Snippet text={installCommand} className="w-full" />
+          <p className="text-xs text-muted-foreground">
+            Uses npm by default. Swap in pnpm/bun if you prefer another package manager.
+          </p>
+          <p className="text-sm text-muted-foreground">
+            or{' '}
+            <a
               href="https://github.com/quinnsprouse/tanstack-shadcn-starter"
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{ scale: 1.01 }}
-              whileTap={{ scale: 0.97 }}
-              transition={{ duration: 0.18, ease: 'easeOut' }}
-              style={{ willChange: 'transform' }}
+              className="inline-flex items-center gap-1 font-medium text-primary transition hover:text-primary/80"
             >
-              <Github className="mr-2 size-4" />
-              View Source
-            </motion.a>
-          </Button>
-        </div>
+              view the source on GitHub
+              <Github className="size-3.5" />
+            </a>
+          </p>
+        </motion.div>
 
-        {/* Tech Stack */}
         <div className="pt-12 space-y-4">
           <div className="flex flex-wrap gap-2 justify-center">
             {stackLinks.map((item) => (
@@ -100,7 +96,6 @@ function Home() {
             Includes AI assistant docs (CLAUDE.md & AGENTS.md)
           </p>
         </div>
-
       </div>
     </div>
   )
