@@ -67,6 +67,14 @@ import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 ```
 
+## Motion & Animation Guidelines
+- Prefer the official Motion library: `import { motion } from 'motion/react'` (do **not** use Framer Motion).
+- Treat motion as subtle polish: keep durations under ~300 ms, favor `ease-out` for enter/exit, `ease-in-out` for in-place moves, and avoid animating repetitive keyboard-driven flows.
+- Use Tailwind-friendly CSS variables for responsive offsets (e.g., `[--hero-offset:24px]`) and set `style={{ willChange: 'transform' }}` on animating elements to prevent 1 px jitters.
+- Provide tactile feedback by scaling buttons down to around `0.97` on tap/active states; never animate from `scale(0)`—start closer to `0.9+` so UI doesn’t “appear from nowhere”.
+- Disable or minimize hover animations for elements heavily used on touch devices; Tailwind v4 already scopes `hover:` to pointer-capable devices, so lean on that.
+- Record and review tricky animations if something feels off, and iterate after short breaks—great micro-interactions come from repeated refinement.
+
 ## Best Practices
 1. Keep components in `src/components/`
 2. Use TypeScript for all files
