@@ -5,7 +5,8 @@ This is a modern full-stack React application using TanStack Start, Shadcn/ui co
 
 ## Tech Stack
 - **Framework**: TanStack Start (Full-stack React with SSR)
-- **UI Components**: Shadcn/ui (Radix UI + Tailwind)
+- **UI Components**: Shadcn/ui (Base UI + Tailwind)
+- **Icons**: HugeIcons Pro (stroke-rounded style)
 - **Styling**: Tailwind CSS v4 with OKLCH colors
 - **Language**: TypeScript
 - **Build Tool**: Vite
@@ -65,6 +66,22 @@ const myServerFn = createServerFn({ method: 'GET' })
 ```tsx
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
+```
+
+## Icon Usage
+- Import icons from `@/components/icons`
+- Use the `Icon` wrapper component with HugeIcons Pro icons
+- Default size is 16px, default strokeWidth is 1.5
+- All icons from `@hugeicons-pro/core-stroke-rounded` are re-exported
+
+```tsx
+import { Icon, ArrowRight01Icon, Github01Icon } from '@/components/icons'
+
+// Basic usage
+<Icon icon={ArrowRight01Icon} />
+
+// With custom size and stroke
+<Icon icon={Github01Icon} size={20} strokeWidth={2} className="text-primary" />
 ```
 
 ## Motion & Animation Guidelines

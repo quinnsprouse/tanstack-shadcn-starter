@@ -20,6 +20,10 @@ export const Route = createRootRoute({
         content: 'width=device-width, initial-scale=1',
       },
       {
+        name: 'theme-color',
+        content: '#ffffff',
+      },
+      {
         title: 'TanStack Start + Shadcn/ui',
       },
     ],
@@ -44,7 +48,7 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html>
+    <html lang="en">
       <head>
         <HeadContent />
       </head>
@@ -61,8 +65,8 @@ function NotFoundComponent() {
     <div className="flex min-h-dvh flex-col items-center justify-center gap-6 px-4 text-center">
       <div className="space-y-2">
         <p className="text-sm font-medium text-muted-foreground">404</p>
-        <h1 className="text-3xl font-semibold">Page not found</h1>
-        <p className="text-muted-foreground">
+        <h1 className="text-3xl font-semibold text-balance">Page not found</h1>
+        <p className="text-muted-foreground text-pretty">
           The page you are looking for either moved or does not exist.
         </p>
       </div>
