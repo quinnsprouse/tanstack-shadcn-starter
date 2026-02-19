@@ -23,6 +23,8 @@ npm run check         # format check + strict lint + typecheck + tests
 npm run test          # run tests once
 npm run test:watch    # test watch mode
 npm run test:coverage # coverage report
+npm run test:e2e      # Playwright smoke tests
+npm run check:push    # check + e2e (same as pre-push hook)
 npm run lint:fix      # auto-fix lint issues
 npm run build         # production build
 ```
@@ -35,10 +37,10 @@ Use this loop for every non-trivial change:
 2. `npm run check`
 3. `npm run build` (before release/push)
 
-Pre-commit hooks already run:
+Git hooks:
 
-- `npx lint-staged` (formats staged files)
-- `npm run check`
+- pre-commit: `npx lint-staged` (fast staged-file formatting/linting)
+- pre-push: `npm run check:push` (full gate + Playwright smoke)
 
 ## Testing Philosophy
 
@@ -54,6 +56,13 @@ Pre-commit hooks already run:
 - Tailwind CSS v4
 - Motion (`motion/react`)
 - Vitest + Testing Library
+- Playwright (browser smoke tests)
+
+## Deterministic Tooling
+
+- `packageManager` is pinned in `package.json`.
+- `engines` are declared in `package.json`.
+- `.nvmrc` is included for consistent Node version selection.
 
 ## HugeIcons Pro Setup
 

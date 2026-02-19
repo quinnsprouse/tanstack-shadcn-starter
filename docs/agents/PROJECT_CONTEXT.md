@@ -20,6 +20,8 @@
 
 - Dev: `npm run dev`
 - Quality gate: `npm run check`
+- Push gate: `npm run check:push`
 - Tests: `npm run test`
+- Browser smoke tests: `npm run test:e2e`
 - Test coverage: `npm run test:coverage`
 - Build: `npm run build`

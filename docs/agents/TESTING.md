@@ -8,7 +8,8 @@ Run this loop for all non-trivial changes:
 2. `npm run lint:strict`
 3. `npm run typecheck`
 4. `npm run test`
-5. `npm run build` for release-critical changes
+5. `npm run test:e2e` for critical UI flows
+6. `npm run build` for release-critical changes
 
 Use `npm run check` for steps 2-4 in one command plus format checking.
 
@@ -31,8 +32,9 @@ Use `npm run check` for steps 2-4 in one command plus format checking.
 ## Pre-commit Guardrails
 
 - Husky pre-commit runs:
-  - `npx lint-staged` (auto-format staged files)
-  - `npm run check` (format check + lint + typecheck + tests)
+  - `npx lint-staged` (fast staged-file format/lint)
+- Husky pre-push runs:
+  - `npm run check:push` (`check` + Playwright smoke)
 
 ## TDD Skill
 

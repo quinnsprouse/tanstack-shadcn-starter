@@ -5,6 +5,7 @@ This is a TanStack Start + React 19 TypeScript app using shadcn/ui (Base UI), Ta
 - Package manager: `npm`
 - Core commands:
   - `npm run check` (format check + strict lint + typecheck + tests)
+  - `npm run check:push` (full push gate: `check` + Playwright smoke test)
   - `npm run build` (typecheck + production build)
   - `npm run dev` (local dev server at `http://localhost:3000`)
 

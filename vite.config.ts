@@ -10,6 +10,20 @@ export default defineConfig({
   },
   build: {
     outDir: '.output',
+    rollupOptions: {
+      onwarn(warning, warn) {
+        const warningFromTanStackStartDependency =
+          warning.code === 'UNUSED_EXTERNAL_IMPORT' &&
+          typeof warning.id === 'string' &&
+          warning.id.includes('node_modules/@tanstack/start-')
+
+        if (warningFromTanStackStartDependency) {
+          return
+        }
+
+        warn(warning)
+      },
+    },
   },
   plugins: [tsConfigPaths(), tanstackStart(), viteReact(), tailwindcss()],
 })

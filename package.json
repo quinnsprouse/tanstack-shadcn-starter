@@ -4,6 +4,11 @@
   "description": "",
   "main": "index.js",
   "type": "module",
+  "packageManager": "npm@11.4.2",
+  "engines": {
+    "node": ">=20.19.0",
+    "npm": ">=11.4.0"
+  },
   "scripts": {
     "dev": "vite dev",
     "prepare": "husky",
@@ -16,9 +21,14 @@
     "test": "vitest run",
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
+    "test:e2e": "env -u NO_COLOR playwright test",
+    "test:e2e:ui": "env -u NO_COLOR playwright test --ui",
+    "test:e2e:headed": "env -u NO_COLOR playwright test --headed",
+    "test:e2e:install": "playwright install chromium",
     "check": "npm run format:check && npm run lint:strict && npm run typecheck && npm run test",
+    "check:push": "npm run check && npm run test:e2e",
     "typecheck": "tsc --noEmit",
-    "build": "npm run typecheck && vite build",
+    "build": "npm run typecheck && vite build --logLevel error",
     "preview": "vite preview",
     "start": "node server.mjs"
   },
@@ -45,6 +55,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.39.2",
+    "@playwright/test": "^1.58.2",
     "@tanstack/eslint-plugin-query": "^5.91.4",
     "@tanstack/eslint-plugin-router": "^1.161.2",
     "@testing-library/jest-dom": "^6.9.1",
