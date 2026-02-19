@@ -42,6 +42,12 @@ Git hooks:
 - pre-commit: `npx lint-staged` (fast staged-file formatting/linting)
 - pre-push: `npm run check:push` (full gate + Playwright smoke)
 
+## Agentation
+
+- `agentation` is installed and auto-mounted in development mode.
+- The toolbar is rendered by `/src/components/agentation-devtool.tsx`.
+- Start the app with `npm run dev`, then use the bottom-right Agentation control to annotate UI.
+
 ## Testing Philosophy
 
 - Prefer behavior tests through public interfaces.

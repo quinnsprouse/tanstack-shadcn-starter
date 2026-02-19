@@ -8,6 +8,7 @@ import {
   Link,
 } from '@tanstack/react-router'
 import appCss from '@/styles/app.css?url'
+import { AgentationDevtool } from '@/components/agentation-devtool'
 
 export const Route = createRootRoute({
   head: () => ({
@@ -54,6 +55,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       </head>
       <body>
         {children}
+        <AgentationDevtool />
         <Scripts />
       </body>
     </html>
