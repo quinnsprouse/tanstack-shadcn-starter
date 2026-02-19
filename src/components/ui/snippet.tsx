@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { AnimatePresence, motion } from 'motion/react'
+import { AnimatePresence, LazyMotion, domAnimation, m } from 'motion/react'
 import { cn } from '@/lib/utils'
 import { Icon, Tick02Icon, Copy01Icon } from '@/components/icons'
 
@@ -76,29 +76,31 @@ export function Snippet({
         aria-label={copied ? 'Copied' : 'Copy to clipboard'}
       >
         <div className="relative size-5 flex items-center justify-center">
-          <AnimatePresence mode="popLayout" initial={false}>
-            <motion.span
-              key={copied ? 'check' : 'copy'}
-              initial={{ opacity: 0, scale: 0.5, filter: 'blur(4px)' }}
-              animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
-              exit={{ opacity: 0, scale: 0.5, filter: 'blur(4px)' }}
-              transition={{ type: 'spring', duration: 0.3, bounce: 0 }}
-              className={cn(
-                'absolute inset-0 flex items-center justify-center rounded-full',
-                copied && 'bg-emerald-500/15'
-              )}
-            >
-              <Icon
-                icon={copied ? Tick02Icon : Copy01Icon}
+          <LazyMotion features={domAnimation}>
+            <AnimatePresence mode="popLayout" initial={false}>
+              <m.span
+                key={copied ? 'check' : 'copy'}
+                initial={{ opacity: 0, scale: 0.5, filter: 'blur(4px)' }}
+                animate={{ opacity: 1, scale: 1, filter: 'blur(0px)' }}
+                exit={{ opacity: 0, scale: 0.5, filter: 'blur(4px)' }}
+                transition={{ type: 'spring', duration: 0.3, bounce: 0 }}
                 className={cn(
-                  'size-4',
-                  copied && 'size-3 text-emerald-600 dark:text-emerald-400'
+                  'absolute inset-0 flex items-center justify-center rounded-full',
+                  copied && 'bg-emerald-500/15'
                 )}
-                strokeWidth={copied ? 2.5 : 1.5}
-                aria-hidden="true"
-              />
-            </motion.span>
-          </AnimatePresence>
+              >
+                <Icon
+                  icon={copied ? Tick02Icon : Copy01Icon}
+                  className={cn(
+                    'size-4',
+                    copied && 'size-3 text-emerald-600 dark:text-emerald-400'
+                  )}
+                  strokeWidth={copied ? 2.5 : 1.5}
+                  aria-hidden="true"
+                />
+              </m.span>
+            </AnimatePresence>
+          </LazyMotion>
         </div>
       </button>
     </div>
