@@ -16,9 +16,9 @@ function Home() {
     <div className="min-h-dvh flex flex-col items-center justify-center px-6">
       <motion.div
         className="max-w-xl text-center space-y-6"
-        initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.3, ease: 'easeOut' }}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 20, filter: 'blur(8px)' }}
+        animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+        transition={{ type: 'spring', duration: 0.6, bounce: 0.1 }}
       >
         <h1 className="text-4xl font-semibold tracking-tight text-balance">
           TanStack + Shadcn Starter
