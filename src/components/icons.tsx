@@ -1,8 +1,12 @@
-import { HugeiconsIcon, type HugeiconsIconProps, type IconSvgElement } from "@hugeicons/react";
+import {
+  HugeiconsIcon,
+  type HugeiconsIconProps,
+  type IconSvgElement,
+} from '@hugeicons/react'
 
-interface IconProps extends Omit<HugeiconsIconProps, "icon"> {
-  icon: IconSvgElement;
-  className?: string;
+interface IconProps extends Omit<HugeiconsIconProps, 'icon'> {
+  icon: IconSvgElement
+  className?: string
 }
 
 export function Icon({
@@ -20,8 +24,8 @@ export function Icon({
       className={className}
       {...props}
     />
-  );
+  )
 }
 
 // Re-export commonly used icons from Pro package for convenience
-export * from "@hugeicons-pro/core-stroke-rounded";
+export * from '@hugeicons-pro/core-stroke-rounded'

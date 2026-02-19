@@ -11,10 +11,5 @@ export default defineConfig({
   build: {
     outDir: '.output',
   },
-  plugins: [
-    tsConfigPaths(),
-    tanstackStart(),
-    viteReact(),
-    tailwindcss(),
-  ],
+  plugins: [tsConfigPaths(), tanstackStart(), viteReact(), tailwindcss()],
 })

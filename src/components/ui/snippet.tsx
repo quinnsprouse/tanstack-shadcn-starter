@@ -60,7 +60,8 @@ export function Snippet({
             key={line}
             className={cn(
               'block whitespace-nowrap font-mono text-[13px] text-foreground/90',
-              prompt && "before:content-['$'] before:mr-2.5 before:text-muted-foreground/50 before:select-none"
+              prompt &&
+                "before:content-['$'] before:mr-2.5 before:text-muted-foreground/50 before:select-none"
             )}
           >
             {line}
@@ -89,7 +90,10 @@ export function Snippet({
             >
               <Icon
                 icon={copied ? Tick02Icon : Copy01Icon}
-                className={cn('size-4', copied && 'size-3 text-emerald-600 dark:text-emerald-400')}
+                className={cn(
+                  'size-4',
+                  copied && 'size-3 text-emerald-600 dark:text-emerald-400'
+                )}
                 strokeWidth={copied ? 2.5 : 1.5}
                 aria-hidden="true"
               />

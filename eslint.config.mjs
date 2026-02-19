@@ -11,6 +11,7 @@ export default tseslint.config(
     ignores: [
       '.output/**',
       'dist/**',
+      'coverage/**',
       'node_modules/**',
       'src/routeTree.gen.ts',
     ],
@@ -97,5 +98,5 @@ export default tseslint.config(
   {
     files: ['**/*.{js,mjs,cjs}'],
     ...tseslint.configs.disableTypeChecked,
-  },
+  }
 )

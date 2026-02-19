@@ -1,118 +1,85 @@
-# TanStack Start + Shadcn/ui + Tailwind v4
+# TanStack + shadcn Starter
 
-A minimal, production-ready boilerplate for modern web apps.
+Minimal starter for TanStack Start + React 19 + shadcn/ui (Base UI) + Tailwind v4.
 
 ## Quick Start
 
 ```bash
-git clone https://github.com/quinnsprouse/tanstack-shadcn-starter.git
-cd tanstack-shadcn-starter
-cp .npmrc.example .npmrc  # Configure HugeIcons Pro (see below)
+npx degit quinnsprouse/tanstack-shadcn-starter my-app
+cd my-app
+cp .npmrc.example .npmrc
+# add your HugeIcons Pro token to .npmrc
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000)
+Open [http://localhost:3000](http://localhost:3000).
 
-## What's Included
+## Daily Commands
 
-- **TanStack Start** - Full-stack React with SSR
-- **Shadcn/ui** - Beautiful, accessible components (Base UI)
-- **HugeIcons Pro** - Premium icon library
-- **Tailwind v4** - Latest CSS framework with OKLCH colors
-- **TypeScript** - Full type safety
-- **React 19** - Latest React features
-- **AI Docs** - CLAUDE.md & AGENTS.md for AI assistants
+```bash
+npm run dev           # local app
+npm run check         # format check + strict lint + typecheck + tests
+npm run test          # run tests once
+npm run test:watch    # test watch mode
+npm run test:coverage # coverage report
+npm run lint:fix      # auto-fix lint issues
+npm run build         # production build
+```
+
+## Feedback Loop (DX)
+
+Use this loop for every non-trivial change:
+
+1. `npm run format`
+2. `npm run check`
+3. `npm run build` (before release/push)
+
+Pre-commit hooks already run:
+
+- `npx lint-staged` (formats staged files)
+- `npm run check`
+
+## Testing Philosophy
+
+- Prefer behavior tests through public interfaces.
+- Do not test what static analysis already covers.
+- ESLint + TypeScript own type errors, hook dependency mistakes, unused vars/imports, and style consistency.
+
+## Stack
+
+- TanStack Start (SSR/full-stack React)
+- React 19 + TypeScript
+- shadcn/ui on Base UI primitives
+- Tailwind CSS v4
+- Motion (`motion/react`)
+- Vitest + Testing Library
 
 ## HugeIcons Pro Setup
 
-This starter uses HugeIcons Pro for icons. You'll need a license to install the packages.
+This repo uses `@hugeicons-pro/core-stroke-rounded`.
 
-### 1. Get Your License Key
+1. Buy/get a token from [hugeicons.com](https://hugeicons.com).
+2. Copy `cp .npmrc.example .npmrc`.
+3. Replace `YOUR_LICENSE_KEY_HERE` in `.npmrc`.
+4. Run `npm install`.
 
-1. Purchase a license at [hugeicons.com](https://hugeicons.com)
-2. Go to your account dashboard -> Tokens tab
-3. Copy your Universal License Key
+`.npmrc` is gitignored. Never commit license keys.
 
-### 2. Configure npm Registry
+## Project Layout
 
-Copy the example file and add your license key:
-
-```bash
-cp .npmrc.example .npmrc
-```
-
-Edit `.npmrc` and replace `YOUR_LICENSE_KEY_HERE` with your actual key:
-
-```
-@hugeicons-pro:registry=https://npm.hugeicons.com/
-//npm.hugeicons.com/:_authToken=YOUR_ACTUAL_LICENSE_KEY
-```
-
-### 3. Install Dependencies
-
-```bash
-npm install
-```
-
-### Important Notes
-
-- **Never commit `.npmrc`** - it contains your license key
-- The `.npmrc` file is already in `.gitignore`
-- For CI/CD, use environment variables to inject the license key
-
-### Icon Usage
-
-```tsx
-import { Icon, ArrowRight01Icon, Github01Icon } from '@/components/icons'
-
-// In your component:
-<Icon icon={ArrowRight01Icon} className="size-4" />
-<Icon icon={Github01Icon} size={20} strokeWidth={1.5} />
-```
-
-## Commands
-
-```bash
-npm run dev    # Start dev server
-npm run build  # Build for production
-npx shadcn@canary add [component]  # Add components
-```
-
-## Project Structure
-
-```
+```txt
 src/
-├── routes/       # Pages and API routes
-├── components/   # React components
-├── lib/         # Utilities
-└── styles/      # Global styles
+  routes/       # file-based TanStack routes
+  components/   # app + ui components
+  lib/          # shared utils
+  styles/       # global styles
 ```
 
-## Adding Routes
+## AI Agent Docs
 
-Create files in `src/routes/`:
-
-```tsx
-// src/routes/about.tsx
-import { createFileRoute } from '@tanstack/react-router'
-
-export const Route = createFileRoute('/about')({
-  component: () => <div>About</div>
-})
-```
-
-## Server Functions
-
-```tsx
-import { createServerFn } from '@tanstack/react-start'
-
-const getData = createServerFn({ method: 'GET' })
-  .handler(async () => {
-    // Runs on server
-    return { data: 'example' }
-  })
-```
+- `AGENTS.md` is the source of truth.
+- `CLAUDE.md` is symlinked to `AGENTS.md`.
 
 ## License
 

@@ -4,15 +4,18 @@ import { Readable } from 'node:stream'
 const HOST = process.env.HOST ?? '0.0.0.0'
 const PORT = Number(process.env.PORT ?? 3000)
 
-const serverEntryPromise = import('./.output/server/server.js').catch((error) => {
-  console.error(
-    'Failed to load built server. Run `npm run build` before starting the production server.',
-  )
-  console.error(error)
-  process.exit(1)
-})
+const serverEntryPromise = import('./.output/server/server.js').catch(
+  (error) => {
+    console.error(
+      'Failed to load built server. Run `npm run build` before starting the production server.'
+    )
+    console.error(error)
+    process.exit(1)
+  }
+)
 
-const hasBody = (method = 'GET') => !['GET', 'HEAD'].includes(method.toUpperCase())
+const hasBody = (method = 'GET') =>
+  !['GET', 'HEAD'].includes(method.toUpperCase())
 
 const server = http.createServer(async (req, res) => {
   try {
